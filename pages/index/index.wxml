@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="picker-view" animation="{{animationAddressMenu}}" style="visibility:{{addressMenuIsShow ? 'visible':'hidden'}}">
+    <!-- 确认取消按钮 -->
+    <view class='btn'>
+        <text catchtap="cityCancel">取消</text>
+        <text style="float: right" catchtap="citySure">确定</text>
+    </view>
+    <!-- 选择地址 -->
+    <picker-view class='cont' bindchange="cityChange" value="{{value}}" wx:key="">
+    <!-- 省 -->
+        <picker-view-column>
+            <view wx:for="{{provinces}}" class="picker-item" wx:key="{{index}}">{{item.name}}</view>
+        </picker-view-column>
+<!-- 市 -->
+        <picker-view-column>
+            <view wx:for="{{citys}}" class="picker-item" wx:key="index">{{item.name}}</view>
+        </picker-view-column>
+<!-- 区 -->
+        <picker-view-column>
+            <view wx:for="{{areas}}" class="picker-item" wx:key="index">{{item.name}}</view>
+        </picker-view-column>
+    </picker-view>
+</view>
+
+<button bindtap='select' class='select'>地址选择</button>
+<view class='address'>{{areaInfo}}</view>
